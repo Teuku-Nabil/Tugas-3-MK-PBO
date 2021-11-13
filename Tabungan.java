@@ -1,27 +1,30 @@
+import java.util.Scanner; 
+
 public abstract class Tabungan{
     private String nama;
-    private long noRekening;
-    private double saldo = 0;
-    private double saldo_minimum = 0;
-    private double setoran_minimum = 0;
+    private long noRek;
+    private static double saldo = 0;
+    private static double saldo_minimum = 0;
+    private static double setoran_minimum = 0;
     private double uang;
     private double jumlahPenarikan;
+    static Scanner s = new Scanner(System.in);
 
     public void Tabungan(){
         nama = nama;
-        noRekening = noRekening;
+        noRek = noRek;
         saldo = 0;
         saldo_minimum = 0;
         setoran_minimum = 0;
     }
 
-    public Tabungan(String nama, long noRekening){
+    public Tabungan(String nama, long noRek){
         this.nama = nama;
-        this.noRekening = noRekening;
+        this.noRek = noRek;
     }
 
-    protected void setSaldoMinimum(double saldo_minimum){
-        this.saldo_minimum = saldo_minimum;
+    protected static void setSaldoMinimum(double saldo_minimum){
+        saldo_minimum = saldo_minimum;
     }
 
     protected void setSetoranMinimum(double setoran_minimum){
@@ -32,20 +35,26 @@ public abstract class Tabungan{
         return this.saldo;
     }
 
-    public void setSaldo(double saldo){
-        this.saldo = saldo;
+    public static double setSaldo(double saldo){
+        System.out.print("Masukkan Saldo Anda: ");
+        saldo = s.nextDouble();
+        saldo = saldo;
+        return saldo;
     }
 
-    public void simpanUang(double uang){
-        if (uang < setoran_minimum){
+    public static double simpanUang(double uang){
+        System.out.print("Masukkan jumlah setoran: ");
+        uang = s.nextDouble();
+        if (uang < saldo_minimum){
             System.out.println("Setoran kurang dari setoran minimum!");
         }
         else{
-            this.uang = uang;
+            uang = uang;
         }
+        return uang;
     }
 
-    public void tarikUang(double jumlahPenarikan){
+    public static void tarikUang(double jumlahPenarikan){
         if(jumlahPenarikan < 0){
             System.out.println("Jumlah penarikan salah!");
         }else if(jumlahPenarikan > saldo){
@@ -53,7 +62,7 @@ public abstract class Tabungan{
         }else if(saldo-jumlahPenarikan < saldo_minimum){
             System.out.println("Jumlah penarikan salah!");
         }else{
-            saldo = jumlahPenarikan;
+            saldo = saldo-jumlahPenarikan;
         }
     }
 }
