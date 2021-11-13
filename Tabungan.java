@@ -1,21 +1,13 @@
-import java.util.Scanner; 
-
 public abstract class Tabungan{
     private String nama;
     private long noRek;
-    private static double saldo = 0;
-    private static double saldo_minimum = 0;
-    private static double setoran_minimum = 0;
-    private double uang;
+    private double saldo = 0;
+    private double saldo_minimum = 0;
+    private double setoran_minimum = 0;
     private double jumlahPenarikan;
-    static Scanner s = new Scanner(System.in);
 
     public void Tabungan(){
-        nama = nama;
-        noRek = noRek;
-        saldo = 0;
-        saldo_minimum = 0;
-        setoran_minimum = 0;
+    
     }
 
     public Tabungan(String nama, long noRek){
@@ -28,30 +20,25 @@ public abstract class Tabungan{
     }
 
     protected void setSetoranMinimum(double setoran_minimum){
-        this.setoran_minimum = setoran_minimum;
+        setoran_minimum = setoran_minimum;
     }
 
     public double getSaldo(){
-        return this.saldo;
-    }
-
-    public static double setSaldo(double saldo){
-        System.out.print("Masukkan Saldo Anda: ");
-        saldo = s.nextDouble();
-        saldo = saldo;
         return saldo;
     }
 
-    public static double simpanUang(double uang){
-        System.out.print("Masukkan jumlah setoran: ");
-        uang = s.nextDouble();
-        if (uang < saldo_minimum){
-            System.out.println("Setoran kurang dari setoran minimum!");
+    public void setSaldo(double saldo){
+        this.saldo = saldo;
+    }
+
+    public void simpanUang(double uang){
+        if (uang >= setoran_minimum){
+            setSaldo(saldo+uang);
+            System.out.println("Saldo: " + getSaldo());
         }
         else{
-            uang = uang;
+            System.out.println("Setoran Minimum: " +setoran_minimum);
         }
-        return uang;
     }
 
     public static void tarikUang(double jumlahPenarikan){
