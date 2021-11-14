@@ -61,10 +61,10 @@ public class Tabungan{
     {
         if (uang >= setoran_minimum){
             setSaldo(saldo+uang);
-            System.out.println("Saldo: " + getSaldo());
+            System.out.println("Saldo Anda: " + getSaldo());
         }
         else{
-            System.out.println("Setoran Minimum: " +setoran_minimum);
+            System.out.println("Setoran Tidak Memenuhi Setoran Minimum!\nSetoran Minimum: " +setoran_minimum);
         }
     }
 
@@ -77,12 +77,12 @@ public class Tabungan{
             }
             else{
                 setSaldo(getSaldo() + jumlahPenarikan);
-                System.out.println("Saldo Kurang Dari Nilai Minimum!\n");
+                System.out.println("Saldo Kurang Dari Nilai Minimum!");
                 System.out.println("Saldo Anda: " +getSaldo());
             }
         }
         else{
-            System.out.println("Jumlah Penarikan Salah!\n");
+            System.out.println("Jumlah Penarikan Salah!");
             System.out.println("Saldo Anda: " +getSaldo());
         }
     }
