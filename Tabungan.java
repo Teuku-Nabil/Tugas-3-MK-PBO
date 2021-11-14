@@ -1,37 +1,44 @@
-public abstract class Tabungan{
+public class Tabungan{
     private String nama;
-    private long noRek;
+    private long noRekening;
     private double saldo = 0;
     private double saldo_minimum = 0;
     private double setoran_minimum = 0;
-    private double jumlahPenarikan;
 
-    public void Tabungan(){
+
+    public Tabungan()
+    {
     
     }
 
-    public Tabungan(String nama, long noRek){
+    public Tabungan(String nama, long noRekening)
+    {
         this.nama = nama;
-        this.noRek = noRek;
+        this.noRekening = noRekening;
     }
 
-    protected static void setSaldoMinimum(double saldo_minimum){
-        saldo_minimum = saldo_minimum;
+    protected void setSaldoMinimum(double saldo_minimum)
+    {
+        this.saldo_minimum = saldo_minimum;
     }
 
-    protected void setSetoranMinimum(double setoran_minimum){
-        setoran_minimum = setoran_minimum;
+    protected void setSetoranMinimum(double setoran_minimum)
+    {
+        this.setoran_minimum = setoran_minimum;
     }
 
-    public double getSaldo(){
+    public double getSaldo()
+    {
         return saldo;
     }
 
-    public void setSaldo(double saldo){
+    public void setSaldo(double saldo)
+    {
         this.saldo = saldo;
     }
 
-    public void simpanUang(double uang){
+    public void simpanUang(double uang)
+    {
         if (uang >= setoran_minimum){
             setSaldo(saldo+uang);
             System.out.println("Saldo: " + getSaldo());
@@ -41,15 +48,22 @@ public abstract class Tabungan{
         }
     }
 
-    public static void tarikUang(double jumlahPenarikan){
-        if(jumlahPenarikan < 0){
-            System.out.println("Jumlah penarikan salah!");
-        }else if(jumlahPenarikan > saldo){
-            System.out.println("Saldo tidak cukup!");
-        }else if(saldo-jumlahPenarikan < saldo_minimum){
-            System.out.println("Jumlah penarikan salah!");
-        }else{
-            saldo = saldo-jumlahPenarikan;
+    public void tarikUang(double jumlahPenarikan)
+    {
+        if(jumlahPenarikan >= 0 && jumlahPenarikan <= getSaldo()){
+            setSaldo(getSaldo() - jumlahPenarikan);
+            if(getSaldo() >= saldo_minimum){
+                System.out.println("Saldo Anda: " +getSaldo());
+            }
+            else{
+                setSaldo(getSaldo() + jumlahPenarikan);
+                System.out.println("Saldo Kurang Dari Nilai Minimum!\n");
+                System.out.println("Saldo Anda: " +getSaldo());
+            }
+        }
+        else{
+            System.out.println("Jumlah Penarikan Salah!\n");
+            System.out.println("Saldo Anda: " +getSaldo());
         }
     }
 }

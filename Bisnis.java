@@ -1,15 +1,18 @@
 public class Bisnis extends Tabungan{
-    private static double SaldoMinimum = 0;
-    private static double SALDO_AWAL_MINIMUM = 1000000;
-    private double SALDO_MINIMUM = 1000000;
-    private static double SETORAN_MINIMUM = 50.000;
+    private double SALDO_AWAL_MINIMUM = 1_000_000;
+    private double SALDO_MINIMUM = 1_000_000;
+    private double SETORAN_MINIMUM = 50_000;
     
-    public Bisnis(String nama, long noRek, double SaldoAwal){
+    public Bisnis(String nama, long noRek, double saldoAwal)
+    {
         super(nama, noRek);
-        SaldoAwal = SaldoAwal;
-    }
-
-    public static void setSaldoMinimum(Class<Double> class1){
-        System.out.println("SaldoMinimum: " + class1);
+        setSaldoMinimum(SALDO_MINIMUM);
+        setSetoranMinimum(SETORAN_MINIMUM);
+        if(saldoAwal >= SALDO_AWAL_MINIMUM){
+            setSaldo(saldoAwal);
+        }
+        else{
+            System.out.println("Saldo Tidak Memenuhi Nilai Minimum!");
+        }
     }
 }
