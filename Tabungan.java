@@ -17,6 +17,26 @@ public class Tabungan{
         this.noRekening = noRekening;
     }
 
+    public String getNama()
+    {
+        return nama;
+    }
+
+    public void setNama(String nama)
+    {
+        this.nama = nama;
+    }
+
+    public long getnoRekening()
+    {
+        return noRekening;
+    }
+
+    public void setnoRekening(long noRekening)
+    {
+        this.noRekening = noRekening;
+    }
+
     protected void setSaldoMinimum(double saldo_minimum)
     {
         this.saldo_minimum = saldo_minimum;
