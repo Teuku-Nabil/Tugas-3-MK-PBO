@@ -5,11 +5,6 @@ public class Haji extends Tabungan{
     private double SALDO_MINIMUM = 500_000;
     private double SETORAN_MINIMUM = 100_000;
 
-    public Haji()
-    {
-
-    }
-
     public Haji(String nama, long noRek, double saldoAwal)
     {
         super(nama, noRek);
@@ -45,6 +40,6 @@ public class Haji extends Tabungan{
             setSaldo(getSaldo() - jumlah);
             System.out.println("Saldo Anda: " +getSaldo());
         }
-
+        s.close();
     }
 }

@@ -1,3 +1,4 @@
+
 public class Tabungan{
     private String nama;
     private long noRekening;
