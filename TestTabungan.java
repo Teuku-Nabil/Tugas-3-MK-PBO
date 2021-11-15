@@ -42,5 +42,9 @@ public class TestTabungan {
         test5.simpanUang(50_000);
         System.out.println("\n===== Setoran Lebih Dari Minimum =====");
         test5.simpanUang(100_000);
+        System.out.println("\n===== Penarikan Lebih 10% Saldo =====");
+        test5.tarikUang(70_000);
+        System.out.println("\n===== Penarikan Tidak Lebih 10% Saldo =====");
+        test5.tarikUang(60_000);
     }
 }
